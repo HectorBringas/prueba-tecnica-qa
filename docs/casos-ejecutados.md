@@ -1,12 +1,9 @@
-1. Resumen de Ejecución
+## 1. Resumen de Ejecución
+* **Fecha de Ejecución:** Octubre de 2026
+* **Ambiente:** Web de Escritorio (Mozilla Firefox) / Versión Móvil (Responsive View)
+* **Resultado Global del Ciclo:** ⚠️ **Ejecución Completada con Incidencia Crítica** (Se ejecutaron los 15 casos de prueba de forma independiente; la gran mayoría resultó exitosa, a excepción de un fallo crítico detectado en la validación inicial del CP-01).
 
-    Fecha de Ejecución: Octubre de 2026
-
-    Ambiente: Web de Escritorio (Mozilla Firefox) / Versión Móvil (Responsive View)
-
-    Estado General: Bloqueado por incidencia crítica en el primer paso del flujo.
-
-2. Detalle de Resultados por Caso de Prueba
+## 2. Detalle de Resultados por Caso de Prueba
 CP-01: Validación de ingreso de número válido en el flujo de Recarga en Línea
 
     Ambiente: Escritorio
