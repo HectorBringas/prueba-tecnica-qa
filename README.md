@@ -41,9 +41,9 @@ my-qa-project/
 ├── playwright.config.ts # Configuración global de Playwright
 ├── tsconfig.json       # Configuración de TypeScript
 └── package.json        # Dependencias y scripts
+```
 
-
-Requisitos Previos y Configuración
+## ⚙️ Requisitos Previos y Configuración
 
 Node.js (versión LTS recomendada)
 
@@ -53,7 +53,7 @@ Bash
 npm install
 npx playwright install
 
-Comandos de Ejecución (Automatización)
+## 💻 Comandos de Ejecución (Automatización)
 
 Ejecutar en modo headless:
 npx playwright test
@@ -63,3 +63,47 @@ npx playwright test --headed
 
 Visualizar el reporte HTML:
 npx playwright show-report
+
+## 🤖 Uso de Inteligencia Artificial como Apoyo Técnico
+
+Durante el desarrollo de este proyecto, se utilizó Inteligencia Artificial (IA) como herramienta de colaboración técnica y guía metodológica (AI Pair Programming), empleándola en:
+
+Estrategia de QA y diseño de escenarios manuales: Validación de criterios de aceptación y buenas prácticas en la creación de casos de prueba.
+
+Arquitectura del framework: Apoyo en la estructuración bajo el patrón Page Object Model (POM).
+
+Resolución técnica: Soporte en la configuración de TypeScript (tsconfig.json), tipos de Node.js e integración de variables para CI/CD.
+
+Optimización de scripts: Desarrollo de la lógica matemática para la validación de precios en el checkout y configuración de evidencias ante fallos.
+
+---
+
+## Documentación de QA - Pruebas de API (Parte D)
+
+### 1. Plan de Pruebas (Resumen)
+- **Objetivo:** Verificar la integridad, rendimiento, correctitud de esquemas y robustez ante errores de la API pública Open-Meteo para las ciudades de Bogotá, Londres y Berlín.
+- **Alcance:** Pruebas funcionales de contrato (esquemas JSON), validaciones data-driven, verificación de rangos físicos de temperatura, pruebas de rendimiento (latencia) y manejo de errores (casos negativos).
+
+### 2. Casos de Prueba Ejecutados
+1. **TC-API-01 a 03:** Consulta exitosa de clima actual y zona horaria para Bogotá, Londres y Berlín mediante estructura Data-Driven (`cities.json`).
+2. **TC-API-04:** Validación de código HTTP 400 ante coordenadas geográficas fuera de rango.
+3. **TC-API-05:** Validación de código HTTP 400 ante omisión de parámetros obligatorios.
+4. **TC-API-06:** Validación de manejo de errores ante tipos de datos alfabéticos en parámetros numéricos.
+5. **TC-API-07:** Verificación de comportamiento de la API ante credenciales/tokens simulados incorrectos.
+
+### 3. Resultados e Informe
+- **Tasa de éxito:** 100% de los casos de prueba pasaron exitosamente.
+- **Rendimiento:** El tiempo de respuesta promedio obtenido fue de **~180ms**, estando muy por debajo del umbral definido de **1500ms**, lo cual demuestra excelente disponibilidad del servicio de Open-Meteo.
+- **Incidencias:** No se registraron fallos ni bugs en la API evaluada; los contratos y esquemas JSON se mantuvieron estables.
+
+## 🚀 Ejecución y CI/CD
+
+### Pruebas de UI (`ui-tests/`)
+- **Modo Headless:** `npm test`
+- **Modo Con Navegador Visible (Headed): `npx playwright test --headed`
+
+### Pruebas de API (`api-tests/`)
+- **Ejecutar pruebas:** `npx playwright test`
+
+### Pipeline de CI/CD
+El proyecto cuenta con un flujo configurado en `.github/workflows/ci.yml` que ejecuta de manera desatendida ambos sets de pruebas en entornos Linux cada vez que se integra código nuevo, generando artefactos descargables con los reportes HTML de Playwright.

@@ -1,0 +1,57 @@
+name: QA Automation Pipeline (UI & API)
+
+on:
+  push:
+    branches: [ "main", "master", "dev" ]
+  pull_request:
+    branches: [ "main", "master", "dev" ]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # --- 1. EJECUCIÓN DE PRUEBAS DE API ---
+      - name: 📦 Instalar dependencias de API Tests
+        working-directory: ./api-tests
+        run: npm ci
+
+      - name: 🚀 Ejecutar Pruebas de API
+        working-directory: ./api-tests
+        run: npx playwright test
+
+      # --- 2. EJECUCIÓN DE PRUEBAS DE UI ---
+      - name: 📦 Instalar dependencias y navegadores de UI Tests
+        working-directory: ./ui-tests
+        run: |
+          npm ci
+          npx playwright install --with-deps
+
+      - name: 🚀 Ejecutar Pruebas de UI (Headless)
+        working-directory: ./ui-tests
+        run: npx playwright test
+
+      # --- 3. GUARDAR REPORTES COMO ARTEFACTOS ---
+      - name: 📂 Subir Reporte HTML de UI
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-ui
+          path: ui-tests/playwright-report/
+          retention-days: 30
+
+      - name: 📂 Subir Reporte HTML de API
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-api
+          path: api-tests/playwright-report-api/
+          retention-days: 30

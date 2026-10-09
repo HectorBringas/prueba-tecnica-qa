@@ -1,0 +1,26 @@
+[
+  {
+    "cityName": "Bogota",
+    "latitude": 4.7110,
+    "longitude": -74.0721,
+    "timezone": "America/Bogota",
+    "expectedMinTemp": -5,
+    "expectedMaxTemp": 35
+  },
+  {
+    "cityName": "London",
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "timezone": "Europe/London",
+    "expectedMinTemp": -15,
+    "expectedMaxTemp": 40
+  },
+  {
+    "cityName": "Berlin",
+    "latitude": 52.5200,
+    "longitude": 13.4050,
+    "timezone": "Europe/Berlin",
+    "expectedMinTemp": -20,
+    "expectedMaxTemp": 40
+  }
+]
